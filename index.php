@@ -1,7 +1,7 @@
 <?php
 
 //global $connect;
-require_once 'connect.php';
+require_once 'config/connect.php';
 
 
 
@@ -24,26 +24,44 @@ require_once 'connect.php';
         <tr>
             <th>Id</th>
             <th>Имя</th>
-            <th>Второе имя</th>
+            <th>Отчество</th>
             <th>Фамилия</th>
         </tr>
 
-
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </table>
-
-    <pre>
         <?php
-            $authors = mysqli_query($connect, "SELECT * FROM `author`");
-            $authors = mysqli_fetch_all($authors);
-            print_r($authors);
+        $authors = mysqli_query($connect, "SELECT * FROM `author`");
+        $authors = mysqli_fetch_all($authors);
+        foreach ($authors as $author) {
+            echo '
+            <tr>
+                <td>' . $author[0] . '</td>
+                <td>' . $author[1] . '</td>
+                <td>' . $author[2] . '</td>
+                <td>' . $author[3] . '</td>
+            </tr>       
+            ';
+        }
         ?>
-    </pre>
+
+    </table>
+    <h3>Добавить автора</h3>
+    <form action="vendor/create.php" method="post">
+
+        <p>Имя</p>
+        <input type="text" name="firstName">
+
+        <p>Отчество</p>
+        <input type="text" name="middleName">
+
+        <p>Фамилия</p>
+        <input type="text" name="lastName">
+
+
+        <br>
+        <button type="submit">Добавить автора</button>
+    </form>
+
+
 </body>
 </html>
 
