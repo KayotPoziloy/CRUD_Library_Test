@@ -1,17 +1,11 @@
 <?php
-
-//global $connect;
 require_once 'config/connect.php';
-
-
-
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Library</title>
 </head>
 <style>
@@ -38,16 +32,15 @@ require_once 'config/connect.php';
                         <td><?= $author[1] ?></td>
                         <td><?= $author[3] ?></td>
                         <td><?= $author[2] ?></td>
-                        <td><a href="update.php?id=<?= $author[0] ?>">Изменить</a></td>
-                        <td><a href="vendor/delete.php?id=<?= $author[0] ?>">Удалить</a></td>
+                        <td><a href="update_author.php?id=<?= $author[0] ?>">Изменить</a></td>
+                        <td><a href="vendor/delete_author.php?id=<?= $author[0] ?>">Удалить</a></td>
                     </tr>
                 <?php
             }
         ?>
-
     </table>
     <h3>Добавить автора</h3>
-    <form action="vendor/create.php" method="post">
+    <form action="vendor/create_author.php" method="post">
 
         <p>Имя</p>
         <input type="text" name="firstName">
@@ -62,7 +55,52 @@ require_once 'config/connect.php';
         <button type="submit">Добавить автора</button>
     </form>
 
+    <h2>Книги</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Год издания</th>
+            <th>ISBN</th>
+            <th>Страницы</th>
+        </tr>
+        <?php
+            $books = mysqli_query($connect, "SELECT * FROM `book`");
+            $books = mysqli_fetch_all($books);
+            foreach ($books as $book) {
+                ?>
+                    <tr>
+                        <td><?= $book[0] ?></td>
+                        <td><?= $book[1] ?></td>
+                        <td><?= $book[2] ?></td>
+                        <td><?= $book[3] ?></td>
+                        <td><?= $book[4] ?></td>
+                        <td>
+                        <td><a href="update_book.php?id=<?= $book[0] ?>">Изменить</a></td>
+                        <td><a href="vendor/delete_book.php?id=<?= $book[0] ?>">Удалить</a></td>
+                        </td>
+                    </tr>
+                <?php
+            }
+        ?>
+    </table>
+    <h3>Добавить книгу</h3>
+    <form action="vendor/create_book.php" method="post">
 
+        <p>Название</p>
+        <input type="text" name="title">
+
+        <p>Год издания</p>
+        <input type="text" name="year">
+
+        <p>ISBN</p>
+        <input type="text" name="isbn">
+
+        <p>Страницы</p>
+        <input type="text" name="pages">
+
+        <br>
+        <button type="submit">Добавить книгу</button>
+    </form>
 </body>
 </html>
-
