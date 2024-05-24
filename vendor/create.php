@@ -3,11 +3,10 @@
 require_once '../config/connect.php';
 
 $name = $_POST['firstName'];
-$lastName = $_POST['middle'];
+$lastName = $_POST['lastName'];
 $middleName = $_POST['middleName'];
-
-echo $name, $lastName, $middleName;
 
 mysqli_query($connect, "INSERT INTO `author` (`id`, `firstName`, `lastName`, `middleName`, `books`)
 VALUES (NULL, '$name', '$lastName', '$middleName', '1')");
 
+header('Location: /');

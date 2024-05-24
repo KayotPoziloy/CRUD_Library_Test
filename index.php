@@ -29,18 +29,19 @@ require_once 'config/connect.php';
         </tr>
 
         <?php
-        $authors = mysqli_query($connect, "SELECT * FROM `author`");
-        $authors = mysqli_fetch_all($authors);
-        foreach ($authors as $author) {
-            echo '
-            <tr>
-                <td>' . $author[0] . '</td>
-                <td>' . $author[1] . '</td>
-                <td>' . $author[2] . '</td>
-                <td>' . $author[3] . '</td>
-            </tr>       
-            ';
-        }
+            $authors = mysqli_query($connect, "SELECT * FROM `author`");
+            $authors = mysqli_fetch_all($authors);
+            foreach ($authors as $author) {
+                ?>
+                    <tr>
+                        <td><?= $author[0] ?></td>
+                        <td><?= $author[1] ?></td>
+                        <td><?= $author[2] ?></td>
+                        <td><?= $author[3] ?></td>
+                        <td><a href="update.php?id=<?= $author[0] ?>">Изменить</a></td>
+                    </tr>
+                <?php
+            }
         ?>
 
     </table>
@@ -55,7 +56,6 @@ require_once 'config/connect.php';
 
         <p>Фамилия</p>
         <input type="text" name="lastName">
-
 
         <br>
         <button type="submit">Добавить автора</button>
