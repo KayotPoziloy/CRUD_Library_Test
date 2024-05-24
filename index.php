@@ -102,5 +102,8 @@ require_once 'config/connect.php';
         <br>
         <button type="submit">Добавить книгу</button>
     </form>
+
+    <h2>Связь авторов и книг</h2>
+    <a href="link_author_book.php">Связать автора и книгу</a>
 </body>
 </html>
