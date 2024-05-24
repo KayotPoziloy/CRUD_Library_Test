@@ -36,8 +36,8 @@ require_once 'config/connect.php';
                     <tr>
                         <td><?= $author[0] ?></td>
                         <td><?= $author[1] ?></td>
-                        <td><?= $author[2] ?></td>
                         <td><?= $author[3] ?></td>
+                        <td><?= $author[2] ?></td>
                         <td><a href="update.php?id=<?= $author[0] ?>">Изменить</a></td>
                         <td><a href="vendor/delete.php?id=<?= $author[0] ?>">Удалить</a></td>
                     </tr>
